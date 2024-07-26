@@ -21,25 +21,35 @@ $insertSql = "INSERT INTO `dictionarytable` (`id`, `dates`, `deutsch`, `english`
         </form>
         <?php 
         class sqlController{
-                public $serverbane = "";
-                public$servername = "localhost";
-                public$username = "root";
-                public$password = "";
-                public$dbname = "dictionarydb";
-                public $conn = new mysqli($servername, $username, $password, $dbname);
                 function sqlQueryDone($sql){
-                        
-                        if(($this -> conn) -> connect_error){
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbname = "dictionarydb";
+
+                        $conn = new mysqli($servername, $username, $password, $dbname);
+                        if($conn -> connect_error){
                          die("Fehler beim Herstellen einer Verbindung./Error to connect./Bağlantı hatası.");
                         }
-         
-                        
-         
+                        if($conn ->query($sql) === True){
+                                echo "</h2>Zum Speichern erledigt</h2>";
+                        }
+                        else{
+                                echo '</br> Error: '.$sql."<br>".$conn->error."<br>";
+                                echo "<h2>Kontrollieren Sie Ihre Eingaben</h2>";
+                        }
                  }
         }
+        
         $sqlC = new sqlController();
+
+        $todayDate = date('Y-m-d', time()); 
+        $deWort = $_POST['deutschWort'];
+        $enWord = $_POST['englihWord'];
+        $trKelime = $_POST['turkceKelime'];
+
         if(isset($_POST['saveSumbit'])){
-                $sqlC->sqlQueryDone("");
+                $sqlC->sqlQueryDone("INSERT INTO `dictionarytable` (`id`, `dates`, `deutsch`, `english`, `türkçe`) VALUES (NULL, '$todayDate', '$deWort', '$enWord', '$trKelime');");
         }
         else{
                 echo "";
