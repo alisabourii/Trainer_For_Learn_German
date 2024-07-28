@@ -43,13 +43,17 @@ $insertSql = "INSERT INTO `dictionarytable` (`id`, `dates`, `deutsch`, `english`
         
         $sqlC = new sqlController();
 
-        $todayDate = date('Y-m-d', time()); 
-        $deWort = $_POST['deutschWort'];
-        $enWord = $_POST['englihWord'];
-        $trKelime = $_POST['turkceKelime'];
-
         if(isset($_POST['saveSumbit'])){
-                $sqlC->sqlQueryDone("INSERT INTO `dictionarytable` (`id`, `dates`, `deutsch`, `english`, `türkçe`) VALUES (NULL, '$todayDate', '$deWort', '$enWord', '$trKelime');");
+                $todayDate = date('Y-m-d', time()); 
+                $deWort = $_POST['deutschWort'];
+                $enWord = $_POST['englihWord'];
+                $trKelime = $_POST['turkceKelime'];
+                if($deWort != '' || $enWord != '' && $trKelime != ''){
+                        $sqlC->sqlQueryDone("INSERT INTO `dictionarytable` (`dates`, `deutsch`, `english`, `türkçe`) VALUES ('$todayDate', '$deWort', '$enWord', '$trKelime');");
+                }
+                
+                
+                
         }
         else{
                 echo "";
