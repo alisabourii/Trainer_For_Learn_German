@@ -12,7 +12,7 @@
                         <input type="text" name="deutschWort" placeholder="Deutsch Wort">
                         <input type="text" name="englihWord"  placeholder="Enlish Word">
                         <input type="text" name="turkceKelime" placeholder="Türkçe Kelime"><br><br>
-                        <input type="text" name="comment" placeholder="comment" style="width: 90%;"><br><br>
+                        <input type="text" name="comment" placeholder="comment" style="width: 49.5%;"><br><br>
 
                         <Button type="submit" name="saveSumbit" id="saveSumbit" style="margin: auto" class="glow-on-hover">Save</Button>
                 </form>
@@ -21,20 +21,22 @@
         <div class="formDiv">
                 
                 <form action="" method="post">
-                        <table border='5' style="text-align:center;">
-                                <thead>
-                                        <th>Deutsch</th>
-                                        <th>English</th>
-                                        <th>Türkçe</th>
-                                </thead>
-                                
-                                <tbody>
-                                <?php
-                                        $sqlC = new sqlController();
-                                        $sqlC->showSql("SELECT * FROM `dictionarytable`"); 
-                                ?>
-                                </tbody>
-                        </table>
+                        <div class="scrollDiv">
+                                <table border='5' style="text-align:center;">
+                                        <thead>
+                                                <th>Deutsch</th>
+                                                <th>English</th>
+                                                <th>Türkçe</th>
+                                        </thead>
+                                        
+                                        <tbody>
+                                        <?php
+                                                $sqlC = new sqlController();
+                                                $sqlC->showSql("SELECT * FROM `dictionarytable`"); 
+                                        ?>
+                                        </tbody>
+                                </table>
+                        </div>
                 </form>
         </div>
         <?php
