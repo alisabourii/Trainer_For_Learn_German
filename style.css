@@ -98,8 +98,23 @@ button{
         src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
       }
       
-      table{
-              background-color: wheat;
-              color: #000;
-              width: 100%;
-      }
+table{
+        background-color: wheat;
+        color: #000;
+        width: 100%;
+        margin-top: 0%;
+}
+
+table{
+    background-color: wheat;
+    color: #000;
+    width: 100%;
+}
+
+.scrollDiv{
+float:left;
+width:900px;
+overflow-y: auto;
+height: 300px;
+margin-left: 10%;
+}
